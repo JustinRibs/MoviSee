@@ -1,10 +1,20 @@
 const path = require('path');
 const express = require('express');
 const moviesRouter = require('./routers/movies');
+const usersRouter = require('./routers/users');
 const app = express();
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 const PORT = 3001;
+
+mongoose.connect(
+  'mongodb+srv://Justin:123@cluster0.ocubn9f.mongodb.net/?retryWrites=true&w=majority',
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
+mongoose.connection.once('open', () => {
+  console.log('Connected to Database');
+});
 
 /**
  * handle parsing request body
@@ -21,6 +31,7 @@ app.use(express.static(path.resolve(__dirname, '../client')));
  * define route handlers
  */
 app.use('/movies', moviesRouter);
+app.use('/users', usersRouter);
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) =>
