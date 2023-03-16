@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const PORT = 3001;
 
 mongoose.connect(
-  'mongodb+srv://Justin:123@cluster0.ocubn9f.mongodb.net/?retryWrites=true&w=majority',
+  'mongodb+srv://Justin:123@justingradassess.xfykyg3.mongodb.net/?retryWrites=true&w=majority',
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 mongoose.connection.once('open', () => {
